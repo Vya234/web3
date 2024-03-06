@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator and Student Info</title>
+</head>
+<body>
+<h1> TODO list </h1>
+<div id="calculator">
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <label for="rollNumber">Roll Number:</label>
+    <input type="text" id="rollNumber" placeholder="Enter your roll number">
+    <br>
+    <label for="number1">Number 1:</label>
+    <input type="number" id="number1" placeholder="Enter number 1">
+
+    <label for="number2">Number 2:</label>
+    <input type="number" id="number2" placeholder="Enter number 2">
+
+    
+    <input type="text" id="operation" placeholder="Enter operation:(+, -, *, /)">
+
+    <button onclick="performCalculation()">Submit</button>
+
+    <div id="output"></div>
+</div>
+
+<script>
+    function performCalculation() {
+        var name = document.getElementById('name').value;
+        var rollNumber = document.getElementById('rollNumber').value;
+        var number1 = parseFloat(document.getElementById('number1').value);
+        var number2 = parseFloat(document.getElementById('number2').value);
+        var operation = document.getElementById('operation').value;
+        var result;
+
+        switch (operation) {
+            case '+':
+                result = number1 + number2;
+                break;
+            case '-':
+                result = number1 - number2;
+                break;
+            case '*':
+                result = number1 * number2;
+                break;
+            case '/':
+                if (number2 !== 0) {
+                    result = number1 / number2;
+                } else {
+                    result = 'Cannot divide by zero';
+                }
+                break;
+            default:
+                result = 'Invalid operation';
+        }
+        var output = `Name: ${name}<br>Roll Number: ${rollNumber}<br>Result: ${result}`;
+        document.getElementById('output').innerHTML = output;
+    }
+</script>
+</body>
+</html>
+
